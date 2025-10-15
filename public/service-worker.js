@@ -4,8 +4,7 @@
 const CACHE_NAME = 'tele-pharmacy-v1'
 const urlsToCache = [
   '/',
-  '/src/assets/logo.svg',
-  '/assets/logo.svg', // Also try the build output path
+  '/logo.svg',
   '/manifest.json'
 ]
 
