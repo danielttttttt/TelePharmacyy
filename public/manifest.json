@@ -1,0 +1,17 @@
+{
+  "short_name": "Tele-Pharmacy",
+  "name": "Tele-Pharmacy - Digital Pharmacy Solution",
+  "description": "Order medications online and connect with pharmacists remotely",
+  "icons": [
+    {
+      "src": "/src/assets/logo.svg",
+      "sizes": "48x48",
+      "type": "image/svg+xml"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#3b82f6",
+  "background_color": "#ffffff",
+  "orientation": "portrait-primary"
+}

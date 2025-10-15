@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>API Test</title>
+</head>
+<body>
+    <h1>API Test</h1>
+    <div id="loading">Loading...</div>
+    <div id="result" style="display: none;"></div>
+    <div id="error" style="display: none; color: red;"></div>
+    
+    <script>
+        // Add a delay to ensure the service worker is registered
+        setTimeout(() => {
+            fetch('/api/medications')
+                .then(response => {
+                    console.log('Response status:', response.status);
+                    console.log('Response headers:', [...response.headers.entries()]);
+                    return response.json();
+                })
+                .then(data => {
+                    document.getElementById('loading').style.display = 'none';
+                    document.getElementById('result').style.display = 'block';
+                    document.getElementById('result').innerHTML = '<pre>' + JSON.stringify(data, null, 2) + '</pre>';
+                })
+                .catch(error => {
+                    document.getElementById('loading').style.display = 'none';
+                    document.getElementById('error').style.display = 'block';
+                    document.getElementById('error').innerHTML = '<p>Error: ' + error.message + '</p>';
+                    console.error('Fetch error:', error);
+                });
+        }, 3000);
+    </script>
+</body>
+</html>

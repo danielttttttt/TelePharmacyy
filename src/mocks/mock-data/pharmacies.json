@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "name": "Addis Ababa Pharmacy",
+    "address": "123 Main Street, Addis Ababa",
+    "phone": "+251 11 123 4567",
+    "latitude": 9.0300,
+    "longitude": 38.7400,
+    "rating": 4.5,
+    "distance": 0.5
+  },
+  {
+    "id": 2,
+    "name": "Ethiopian Medical Pharmacy",
+    "address": "456 Hospital Road, Addis Ababa",
+    "phone": "+251 11 234 5678",
+    "latitude": 9.0200,
+    "longitude": 38.7500,
+    "rating": 4.2,
+    "distance": 1.2
+  },
+  {
+    "id": 3,
+    "name": "Health Plus Pharmacy",
+    "address": "789 Health Avenue, Addis Ababa",
+    "phone": "+251 11 345 6789",
+    "latitude": 9.0400,
+    "longitude": 38.7300,
+    "rating": 4.7,
+    "distance": 1.8
+  },
+  {
+    "id": 4,
+    "name": "Green Cross Pharmacy",
+    "address": "101 Medicine Street, Addis Ababa",
+    "phone": "+251 11 456 7890",
+    "latitude": 9.0100,
+    "longitude": 38.7600,
+    "rating": 4.0,
+    "distance": 2.5
+  },
+  {
+    "id": 5,
+    "name": "Life Care Pharmacy",
+    "address": "202 Wellness Road, Addis Ababa",
+    "phone": "+251 11 567 8901",
+    "latitude": 9.0500,
+    "longitude": 38.7200,
+    "rating": 4.3,
+    "distance": 3.1
+  },
+  {
+    "id": 6,
+    "name": "Prime Pharmacy",
+    "address": "303 Prime Avenue, Addis Ababa",
+    "phone": "+251 11 678 9012",
+    "latitude": 9.0000,
+    "longitude": 38.7700,
+    "rating": 4.6,
+    "distance": 4.2
+  }
+]
