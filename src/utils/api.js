@@ -1,6 +1,7 @@
 // src/utils/api.js
 // Utility functions for API calls with Firebase Authentication
 import { getIdToken } from '../firebase/auth';
+import { auth } from '../firebase/firebase';
 
 /**
   * Fetch medications with optional search query and featured filter
@@ -338,8 +339,8 @@ export const createOrder = async (orderData) => {
  */
 export const trackOrder = async (orderId) => {
   try {
-    if (process.env.NODE_ENV === 'production') {
-      // In production, simulate order tracking with mock response
+    if (process.env.NODE_ENV === 'production' || !auth) {
+      // In production or when Firebase is not configured, simulate order tracking with mock response
       const statuses = ['confirmed', 'preparing', 'shipped', 'in_transit', 'delivered'];
       const randomStatus = statuses[Math.floor(Math.random() * statuses.length)];
       

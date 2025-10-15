@@ -4,7 +4,7 @@
   "description": "Order medications online and connect with pharmacists remotely",
   "icons": [
     {
-      "src": "/src/assets/logo.svg",
+      "src": "/assets/logo.svg", 
       "sizes": "48x48",
       "type": "image/svg+xml"
     }

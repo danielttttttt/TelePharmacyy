@@ -14,7 +14,17 @@ if (process.env.NODE_ENV === 'development') {
   }).catch((error) => {
     console.error('Failed to start mock service worker:', error)
   })
+} else {
+  // In production, ensure we don't try to register MSW
+  console.log('Production mode - skipping mock service worker initialization')
 }
+
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <React.StrictMode>
+    <ThemeModeScript />
+    <App />
+  </React.StrictMode>,
+)
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>

@@ -16,6 +16,14 @@ export const AuthProvider = ({ children }) => {
 
   // Listen for auth state changes
   useEffect(() => {
+    // If auth is not initialized (due to missing Firebase config), skip auth listener
+    if (!auth) {
+      console.warn('Firebase auth not available, skipping auth listener');
+      setLoading(false);
+      setAuthInitialized(true);
+      return;
+    }
+    
     const unsubscribe = onAuthStateChanged(auth, async (firebaseUser) => {
       if (firebaseUser) {
         // User is signed in
@@ -61,7 +69,11 @@ export const AuthProvider = ({ children }) => {
     });
 
     // Cleanup subscription on unmount
-    return () => unsubscribe();
+    return () => {
+      if (unsubscribe) {
+        unsubscribe();
+      }
+    };
   }, []);
 
   // Check if user is authenticated

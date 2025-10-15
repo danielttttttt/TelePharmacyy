@@ -6,24 +6,18 @@ import dotenv from 'dotenv'
 // Load environment variables from .env file
 dotenv.config()
 
-// https://vitejs.dev/config/
-export default defineConfig(({ command, mode }) => {
+export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '')
-  const isProduction = mode === 'production'
-  
-  // Expose all environment variables to the client
   const envWithProcess = {
     ...env,
     NODE_ENV: mode,
-    // Only expose variables that start with VITE_ to the client
     ...Object.fromEntries(
-      Object.entries(process.env)
-        .filter(([key]) => key.startsWith('VITE_'))
+      Object.entries(process.env).filter(([key]) => key.startsWith('VITE_'))
     )
   }
 
   return {
-    base: '/',
+    base: "./", // ✅ IMPORTANT FIX for Vercel
     plugins: [react()],
     define: {
       'process.env': envWithProcess,
@@ -32,28 +26,6 @@ export default defineConfig(({ command, mode }) => {
     resolve: {
       alias: {
         '@': resolve(__dirname, 'src')
-      }
-    },
-    server: {
-      port: 3000,
-      proxy: {
-        '/api': {
-          target: 'http://localhost:301',
-          changeOrigin: true,
-          secure: false,
-          rewrite: (path) => path.replace(/^\/api/, '')
-        }
-      }
-    },
-    preview: {
-      port: 300,
-      proxy: {
-        '/api': {
-          target: 'http://localhost:301',
-          changeOrigin: true,
-          secure: false,
-          rewrite: (path) => path.replace(/^\/api/, '')
-        }
       }
     },
     build: {

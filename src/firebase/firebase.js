@@ -15,12 +15,24 @@ const firebaseConfig = {
   measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID
 };
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
+// Initialize Firebase only if all required config values are present
+let app, auth, db, analytics;
 
-// Initialize Firebase services
-const auth = getAuth(app);
-const db = getFirestore(app);
-const analytics = getAnalytics(app);
+if (firebaseConfig.apiKey && firebaseConfig.authDomain && firebaseConfig.projectId) {
+  // Initialize Firebase
+  app = initializeApp(firebaseConfig);
+  
+  // Initialize Firebase services
+  auth = getAuth(app);
+  db = getFirestore(app);
+  analytics = getAnalytics(app);
+} else {
+  console.warn('Firebase not initialized: Missing environment variables');
+  // Create mock objects for when Firebase is not configured
+  app = null;
+  auth = null;
+  db = null;
+  analytics = null;
+}
 
 export { app, auth, db, analytics };
